@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://xlfdo1aws3dx"]
+
+[ext_resource type="Script" path="res://Player/Player.cs" id="1_kw1ya"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ovun0"]
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lt4u"]
+albedo_color = Color(0.0235294, 0.027451, 0.396078, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rgbb1"]
+height = 3.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_kw1ya")
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Character" type="MeshInstance3D" parent="Head"]
+mesh = SubResource("CapsuleMesh_ovun0")
+surface_material_override/0 = SubResource("StandardMaterial3D_1lt4u")
+
+[node name="Camera" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02348, 0)
+
+[node name="Collisions" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rgbb1")
